@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<OrderRequest>
+   <OrderHeader>
+      <Snrf>173831239</Snrf>
+      <DocumentDate>20250414</DocumentDate>
+      <DocumentTime>1625</DocumentTime>
+      <SenderMailboxId>5940477285003</SenderMailboxId>
+      <ReceiverMailboxId>5940477475206</ReceiverMailboxId>
+      <OrderType>Original order</OrderType>
+      <OrderNumber>0146980931</OrderNumber>
+      <OrderDate>20250414</OrderDate>
+      <DeliveryDate>20250424</DeliveryDate>
+      <DeliveryDateEarliest></DeliveryDateEarliest>
+      <DeliveryDateLatest></DeliveryDateLatest>
+      <FreeTextField>STORE MANUAL ORDER DR01</FreeTextField>
+      <PromotionDealNumber></PromotionDealNumber>
+      <GLNBuyer>5940477285003</GLNBuyer>
+      <NameBuyer></NameBuyer>
+      <AddressBuyer></AddressBuyer>
+      <PostalCodeBuyer></PostalCodeBuyer>
+      <CityBuyer></CityBuyer>
+      <CountryCodeBuyer></CountryCodeBuyer>
+      <GLNShipTo>5940477285065</GLNShipTo>
+      <NameShipTo></NameShipTo>
+      <AddressShipTo></AddressShipTo>
+      <PostalCodeShipTo></PostalCodeShipTo>
+      <CityShipTo></CityShipTo>
+      <CountryCodeShipTo></CountryCodeShipTo>
+      <GLNInvoicee></GLNInvoicee>
+      <NameInvoicee></NameInvoicee>
+      <AddressInvoicee></AddressInvoicee>
+      <PostalCodeInvoicee></PostalCodeInvoicee>
+      <CityInvoicee></CityInvoicee>
+      <CountryCodeInvoicee></CountryCodeInvoicee>
+      <GLNSupplier>5940477475206</GLNSupplier>
+      <SupplierCode></SupplierCode>
+      <NameSupplier></NameSupplier>
+      <AddressSupplier></AddressSupplier>
+      <PostalCodeSupplier></PostalCodeSupplier>
+      <CitySupplier></CitySupplier>
+      <CountryCodeSupplier></CountryCodeSupplier>
+      <Currency>RON</Currency>
+   </OrderHeader>
+   <OrderDetails>
+      <Detail>
+         <DetailNumber>1</DetailNumber>
+         <ItemEanBarcode>5054905249274</ItemEanBarcode>
+         <ItemSenderCode></ItemSenderCode>
+         <ItemReceiverCode>DCD771D2-QW</ItemReceiverCode>
+         <ItemDescription>*MASINA DE GAURIT 2X2AH DCD771D2 Q</ItemDescription>
+         <ItemGroupId></ItemGroupId>
+         <ItemGrossWeight></ItemGrossWeight>
+         <ItemNetWeight></ItemNetWeight>
+         <ItemOrderedQuantity>10</ItemOrderedQuantity>
+         <ItemOrderedQuantityUom>EA</ItemOrderedQuantityUom>
+         <QuantityPerPack></QuantityPerPack>
+         <PackageType></PackageType>
+         <ItemGrossPrice></ItemGrossPrice>
+         <ItemNetPrice>491.61</ItemNetPrice>
+         <ItemDeliveryDate></ItemDeliveryDate>
+         <ItemBestBeforeDate></ItemBestBeforeDate>
+      </Detail>
+	  <Detail>
+         <DetailNumber>2</DetailNumber>
+         <ItemEanBarcode>5054905249275</ItemEanBarcode>
+         <ItemSenderCode></ItemSenderCode>
+         <ItemReceiverCode>DCD771D2-QW</ItemReceiverCode>
+         <ItemDescription>*MASINA DE GAURIT 2X2AH DCD771D2 Q2</ItemDescription>
+         <ItemGroupId></ItemGroupId>
+         <ItemGrossWeight></ItemGrossWeight>
+         <ItemNetWeight></ItemNetWeight>
+         <ItemOrderedQuantity>20</ItemOrderedQuantity>
+         <ItemOrderedQuantityUom>EA</ItemOrderedQuantityUom>
+         <QuantityPerPack></QuantityPerPack>
+         <PackageType></PackageType>
+         <ItemGrossPrice></ItemGrossPrice>
+         <ItemNetPrice>491.61</ItemNetPrice>
+         <ItemDeliveryDate></ItemDeliveryDate>
+         <ItemBestBeforeDate></ItemBestBeforeDate>
+      </Detail>
+   </OrderDetails>
+</OrderRequest>

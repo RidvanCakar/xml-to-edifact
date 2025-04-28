@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderRequest>
+  <OrderHeader>
+    <SenderMailboxId>SENDERID</SenderMailboxId>
+    <ReceiverMailboxId>RECEIVERID</ReceiverMailboxId>
+    <OrderNumber>PO123456</OrderNumber>
+    <OrderDate>20250418</OrderDate>
+    <Currency>EUR</Currency>
+    <GLNBuyer>1234567890123</GLNBuyer>
+    <NameBuyer>Buyer Name</NameBuyer>
+    <AddressBuyer>Buyer Address</AddressBuyer>
+    <CityBuyer>City</CityBuyer>
+    <PostalCodeBuyer>PostalCode</PostalCodeBuyer>
+    <CountryCodeBuyer>Country</CountryCodeBuyer>
+    <GLNSupplier>9876543210987</GLNSupplier>
+    <NameSupplier>Supplier Name</NameSupplier>
+    <AddressSupplier>Supplier Address</AddressSupplier>
+    <CitySupplier>City</CitySupplier>
+    <PostalCodeSupplier>PostalCode</PostalCodeSupplier>
+    <CountryCodeSupplier>Country</CountryCodeSupplier>
+    <FreeTextField>Optional order comments</FreeTextField>
+  </OrderHeader>
+
+  <OrderDetails>
+    <Detail>
+      <DetailNumber>1</DetailNumber>
+      <ItemEanBarcode>1234567890123</ItemEanBarcode>
+      <ItemReceiverCode>ABC123</ItemReceiverCode>
+      <ItemDescription>Product Description</ItemDescription>
+      <ItemOrderedQuantity>100</ItemOrderedQuantity>
+      <ItemOrderedQuantityUom>EA</ItemOrderedQuantityUom>
+      <ItemNetPrice>10.00</ItemNetPrice>
+    </Detail>
+  </OrderDetails>
+</OrderRequest>
