@@ -7,22 +7,22 @@ use Monolog\Handler\StreamHandler;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// Logger başlatma
+// Starting the Logger
 $log = new Logger('edifact');
 $log->pushHandler(new StreamHandler($_ENV['LOG_FILE'], Logger::DEBUG));
 $log->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG)); // terminale de yaz
 
 $log->info("Script başlatıldı.");
 
-// Klasör yolları
+// Folder paths
 $inbox = $_ENV['INBOX_DIR'];
 $outbox = $_ENV['OUTBOX_DIR'];
 $archive = $_ENV['ARCHIVE_DIR'];
 $error = $_ENV['ERROR_DIR'];
 
-// XML dosyalarını oku
+// Read XML files
 $log->info("Inbox klasörü kontrol ediliyor");
-$files = glob($inbox . '/*.XML');
+$files = array_merge(glob($inbox . '/*.xml'), glob($inbox . '/*.XML'));
 
 if (empty($files)) {
     $log->warning("Inbox klasöründe işlenecek XML dosyası bulunamadı.");
@@ -44,14 +44,34 @@ foreach ($files as $file) {
 
         $ediString = convertXmlToEdifact($xml, $log);
 
-        $ediFilename = basename($file, '.xml') . '.edi';
+
+        $timestamp = date('Ymd_His'); 
+        $ediFilename = basename($file, '.xml') . "_$timestamp.edi";
         $ediPath = $outbox . '/' . $ediFilename;
+
+
+        //outbox file existence checked if not created
+        if (!is_dir($outbox)) {
+            mkdir($outbox, 0777, true);
+            $log->info("Outbox klasörü oluşturuldu: $outbox");
+        }
 
         file_put_contents($ediPath, $ediString);
         $log->info("EDIFACT dosyası outbox'a yazıldı: $ediFilename");
 
-        // XML dosyasını archive klasörüne taşı
-        $archivedPath = $archive . '/' . $filename;
+
+
+        //archive file existence checked if not created
+
+        if (!is_dir($archive)) {
+            mkdir($archive, 0777, true);
+            $log->info("Archive klasörü oluşturuldu.");
+        }
+
+
+        // Move the XML file to the archive folder
+        $archivedName = pathinfo($filename, PATHINFO_FILENAME) . "_$timestamp.xml";
+        $archivedPath = $archive . '/' . $archivedName;
         if (rename($file, $archivedPath)) {
             $log->info("XML dosyası archive klasörüne taşındı: $filename");
         } else {
@@ -61,8 +81,16 @@ foreach ($files as $file) {
     } catch (Exception $e) {
         $log->error("Hata oluştu: " . $e->getMessage());
 
-        // Hatalı dosyayı error klasörüne taşı
-        $errorPath = $error . '/' . $filename;
+        //error file existence checked if not created
+        if(!is_dir($error)){
+            mkdir($error,0777,true);
+            $log->info("error dosyası oluşturuldu");
+        }
+
+
+        // Move the faulty file to the error folder
+        $errorName = pathinfo($filename, PATHINFO_FILENAME) . "_" . date('Ymd_His'). ".xml";
+        $errorPath = $error . '/' . $errorName;
         copy($file, $errorPath);
         unlink($file);
         $log->info("XML dosyası error klasörüne taşındı: $filename");
@@ -73,7 +101,7 @@ $log->info("Tüm işlemler tamamlandı.");
 
 
 
-// TEK TEK EDIFACT ÜRETEN FONKSİYON
+// Function that generates EDIFACT one by one
 function convertXmlToEdifact(SimpleXMLElement $xml, Logger $log): string {
     $header = $xml->OrderHeader;
     $details = $xml->OrderDetails->Detail;
